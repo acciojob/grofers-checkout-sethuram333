@@ -3,29 +3,30 @@ getSumBtn.append("Get Total Price");
 document.body.appendChild(getSumBtn);
 
 const getSum = () => {
-  const prices = document.querySelectorAll(".prices");
+//Add your code here
+const prices = document.querySelectorAll(".prices");
 
-  let total = 0;
+let total = 0;
 
-  prices.forEach((price) => {
-    total += Number(price.textContent);
-  });
+prices.forEach((price) => {
+  total += Number(price.textContent);
+});
 
-  // remove old result if exists
-  const oldAns = document.getElementById("ans");
-  if (oldAns) oldAns.remove();
+const old = document.getElementById("ans");
+if (old) old.remove();
 
-  // create new row
-  const table = document.querySelector("table");
-  const newRow = document.createElement("tr");
+const table = document.querySelector("table");
+const row = document.createElement("tr");
 
-  const newCell = document.createElement("td");
-  newCell.colSpan = 2;
-  newCell.id = "ans"; // 🔥 REQUIRED for Cypress
-  newCell.textContent = total;
+const cell = document.createElement("td");
+cell.colSpan = 2;
+cell.id = "ans";
+cell.textContent = total;
 
-  newRow.appendChild(newCell);
-  table.appendChild(newRow);
+row.appendChild(cell);
+table.appendChild(row);
+  
 };
 
 getSumBtn.addEventListener("click", getSum);
+
