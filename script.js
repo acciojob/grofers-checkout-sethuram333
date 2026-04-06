@@ -3,23 +3,26 @@ getSumBtn.append("Get Total Price");
 document.body.appendChild(getSumBtn);
 
 const getSum = () => {
-  // select all price cells
-  const prices = document.querySelectorAll(".price");
+  const prices = document.querySelectorAll(".prices");
 
   let total = 0;
 
-  // loop through NodeList
   prices.forEach((price) => {
     total += Number(price.textContent);
   });
+
+  // remove old result if exists
+  const oldAns = document.getElementById("ans");
+  if (oldAns) oldAns.remove();
 
   // create new row
   const table = document.querySelector("table");
   const newRow = document.createElement("tr");
 
   const newCell = document.createElement("td");
-  newCell.colSpan = 2; // span across both columns
-  newCell.textContent = "Total Price: " + total;
+  newCell.colSpan = 2;
+  newCell.id = "ans"; // 🔥 REQUIRED for Cypress
+  newCell.textContent = total;
 
   newRow.appendChild(newCell);
   table.appendChild(newRow);
